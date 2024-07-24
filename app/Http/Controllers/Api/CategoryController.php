@@ -20,6 +20,13 @@ class CategoryController extends Controller
         return new CategoryShowResource($category);
     }
 
+    public function store(Request $request)
+    {
+        $category = Category::create($request->all());
+
+        return new CategoryShowResource($category);
+    }
+
     public function list()
     {
         return CategoryIndexResource::collection(Category::all());
