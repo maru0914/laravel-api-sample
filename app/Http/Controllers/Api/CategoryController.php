@@ -23,9 +23,23 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        $category = Category::create($request->all());
+        $category = Category::create($request->validated());
 
         return new CategoryShowResource($category);
+    }
+
+    public function update(StoreCategoryRequest $request, Category $category)
+    {
+        $category->update($request->validated());
+
+        return new CategoryShowResource($category);
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return response()->noContent();
     }
 
     public function list()
