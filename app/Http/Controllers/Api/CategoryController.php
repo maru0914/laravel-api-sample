@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Resources\CategoryIndexResource;
 use App\Http\Resources\CategoryShowResource;
 use App\Models\Category;
@@ -20,7 +21,7 @@ class CategoryController extends Controller
         return new CategoryShowResource($category);
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
         $category = Category::create($request->all());
 

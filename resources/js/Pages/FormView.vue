@@ -7,9 +7,10 @@ const submit = async () => {
     await axios.post('/api/categories', {
         name: name.value
     })
-        .then(response => {
+        .then((response) => {
             console.log('New Category ID: ' + response.data.data.id)
         })
+        .catch((error) => console.log(error))
 }
 </script>
 
